@@ -11,3 +11,4 @@
 # Systems Architecture diagram/image
 Link: https://drive.google.com/file/d/1dGZopqcA8QctI9gmXWY5yd2WziTsECas/view?usp=sharing
 
+![MoMo SMS Analyzer Architecture drawio](https://github.com/user-attachments/assets/8515f62a-cefc-4649-beed-9f246236a65a)
