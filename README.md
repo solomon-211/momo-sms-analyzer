@@ -1,4 +1,7 @@
 # momo-sms-analyzer
+# Team name:ThreeCode
+**Team** **members**: Darlene Ayinkamiye,Solomon Leek and Chely Kelvin Indamutsa Sheja.
+
 
 # scrumboard
 - https://github.com/users/Darlene250/projects/1
