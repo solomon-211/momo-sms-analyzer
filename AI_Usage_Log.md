@@ -25,7 +25,7 @@
 - **Limitation**: Only syntax checking, no logic or schema generation
 
 #### 3. Research on MySQL Best Practices
-- **Tool Used**: Amazon Q Developer
+- **Tool Used**: Google Gemini AI
 - **Purpose**: Research on MySQL indexing strategies and constraint best practices
 - **Citation**: Referenced MySQL documentation and best practice guides
 - **Details**: Used for understanding optimal index placement and constraint naming conventions
@@ -33,11 +33,11 @@
 ### Prohibited AI Usage - STRICTLY AVOIDED
 
 The following were explicitly avoided per assignment requirements:
-- ❌ **ERD Design Generation**: All entity identification and relationship design done manually
-- ❌ **SQL Schema Creation**: All table structures and relationships designed by team
-- ❌ **Business Logic Development**: All business rules and constraints developed by team
-- ❌ **Database Relationship Design**: All cardinalities and junction tables designed manually
-- ❌ **Technical Explanation Writing**: All design rationale and documentation written by team
+-  **ERD Design Generation**: All entity identification and relationship design done manually
+-  **SQL Schema Creation**: All table structures and relationships designed by team
+-  **Business Logic Development**: All business rules and constraints developed by team
+-  **Database Relationship Design**: All cardinalities and junction tables designed manually
+-  **Technical Explanation Writing**: All design rationale and documentation written by team
 
 ### Individual Team Member AI Usage
 
