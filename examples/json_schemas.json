@@ -1,0 +1,247 @@
+{
+  "schemas": {
+    "transaction_category": {
+      "type": "object",
+      "properties": {
+        "category_id": {"type": "integer"},
+        "category_name": {"type": "string", "maxLength": 50},
+        "category_code": {"type": "string", "maxLength": 10},
+        "description": {"type": "string"},
+        "created_at": {"type": "string", "format": "date-time"}
+      },
+      "required": ["category_id", "category_name", "category_code"]
+    },
+    "user": {
+      "type": "object",
+      "properties": {
+        "user_id": {"type": "integer"},
+        "phone_number": {"type": "string", "maxLength": 15},
+        "full_name": {"type": "string", "maxLength": 100},
+        "account_number": {"type": "string", "maxLength": 20},
+        "balance": {"type": "number", "minimum": 0},
+        "status": {"type": "string", "enum": ["active", "inactive", "suspended"]},
+        "created_at": {"type": "string", "format": "date-time"},
+        "updated_at": {"type": "string", "format": "date-time"}
+      },
+      "required": ["user_id", "phone_number"]
+    },
+    "transaction": {
+      "type": "object",
+      "properties": {
+        "transaction_id": {"type": "integer"},
+        "tx_id": {"type": "string", "maxLength": 50},
+        "sender_id": {"type": "integer"},
+        "receiver_id": {"type": "integer"},
+        "category_id": {"type": "integer"},
+        "amount": {"type": "number", "minimum": 0},
+        "fee": {"type": "number", "minimum": 0},
+        "balance_after": {"type": "number"},
+        "transaction_date": {"type": "string", "format": "date-time"},
+        "status": {"type": "string", "enum": ["completed", "pending", "failed", "cancelled"]},
+        "message_body": {"type": "string"},
+        "service_center": {"type": "string", "maxLength": 20},
+        "created_at": {"type": "string", "format": "date-time"}
+      },
+      "required": ["transaction_id", "tx_id", "category_id", "amount", "transaction_date"]
+    },
+    "system_log": {
+      "type": "object",
+      "properties": {
+        "log_id": {"type": "integer"},
+        "log_level": {"type": "string", "enum": ["INFO", "WARNING", "ERROR", "DEBUG"]},
+        "message": {"type": "string"},
+        "module": {"type": "string", "maxLength": 50},
+        "user_id": {"type": "integer"},
+        "transaction_id": {"type": "integer"},
+        "ip_address": {"type": "string", "maxLength": 45},
+        "created_at": {"type": "string", "format": "date-time"}
+      },
+      "required": ["log_id", "log_level", "message"]
+    }
+  },
+  "examples": {
+    "complete_transaction_with_relations": {
+      "transaction_id": 1,
+      "tx_id": "51732411227",
+      "amount": 600.00,
+      "fee": 0.00,
+      "balance_after": 400.00,
+      "transaction_date": "2024-05-10T21:32:32Z",
+      "status": "completed",
+      "message_body": "Your payment of 600 RWF to Samuel Carter 95464 has been completed",
+      "service_center": "+250788110381",
+      "sender": {
+        "user_id": 1,
+        "phone_number": "250791666666",
+        "full_name": "Samuel Carter",
+        "account_number": "36521838",
+        "balance": 25000.00,
+        "status": "active"
+      },
+      "receiver": {
+        "user_id": 2,
+        "phone_number": "250790777777",
+        "full_name": "Jane Smith",
+        "account_number": "95464",
+        "balance": 15000.00,
+        "status": "active"
+      },
+      "category": {
+        "category_id": 1,
+        "category_name": "Payment",
+        "category_code": "PAY",
+        "description": "General payments to merchants or individuals"
+      },
+      "logs": [
+        {
+          "log_id": 1,
+          "log_level": "INFO",
+          "message": "Transaction processed successfully",
+          "module": "TRANSACTION_PROCESSOR",
+          "created_at": "2024-05-10T21:32:35Z"
+        },
+        {
+          "log_id": 2,
+          "log_level": "INFO",
+          "message": "SMS notification sent",
+          "module": "NOTIFICATION_SERVICE",
+          "created_at": "2024-05-10T21:32:40Z"
+        }
+      ]
+    },
+    "bank_deposit_transaction": {
+      "transaction_id": 6,
+      "tx_id": "BANK_DEP_001",
+      "amount": 40000.00,
+      "fee": 0.00,
+      "balance_after": 40400.00,
+      "transaction_date": "2024-05-11T18:43:49Z",
+      "status": "completed",
+      "message_body": "A bank deposit of 40000 RWF has been added to your mobile money account",
+      "receiver": {
+        "user_id": 1,
+        "phone_number": "250791666666",
+        "full_name": "Samuel Carter",
+        "account_number": "36521838"
+      },
+      "category": {
+        "category_id": 2,
+        "category_name": "Bank Deposit",
+        "category_code": "DEP"
+      }
+    },
+    "airtime_purchase": {
+      "transaction_id": 7,
+      "tx_id": "13913173274",
+      "amount": 2000.00,
+      "fee": 0.00,
+      "balance_after": 25280.00,
+      "transaction_date": "2024-05-12T11:41:28Z",
+      "status": "completed",
+      "message_body": "Your payment of 2000 RWF to Airtime with token has been completed",
+      "sender": {
+        "user_id": 1,
+        "phone_number": "250791666666",
+        "full_name": "Samuel Carter"
+      },
+      "category": {
+        "category_id": 4,
+        "category_name": "Airtime Purchase",
+        "category_code": "AIR"
+      }
+    },
+    "money_transfer": {
+      "transaction_id": 8,
+      "tx_id": "TRF_165_001",
+      "amount": 10000.00,
+      "fee": 100.00,
+      "balance_after": 28300.00,
+      "transaction_date": "2024-05-11T20:34:47Z",
+      "status": "completed",
+      "message_body": "10000 RWF transferred to Samuel Carter from 36521838",
+      "sender": {
+        "user_id": 1,
+        "phone_number": "250791666666",
+        "full_name": "Samuel Carter",
+        "account_number": "36521838"
+      },
+      "receiver": {
+        "user_id": 2,
+        "phone_number": "250790777777",
+        "full_name": "Jane Smith"
+      },
+      "category": {
+        "category_id": 3,
+        "category_name": "Money Transfer",
+        "category_code": "TRF"
+      }
+    },
+    "merchant_payment": {
+      "transaction_id": 9,
+      "tx_id": "45434420466",
+      "amount": 10900.00,
+      "fee": 0.00,
+      "balance_after": 14380.00,
+      "transaction_date": "2024-05-12T13:26:13Z",
+      "status": "completed",
+      "message_body": "Your payment of 10,900 RWF to Jane Smith 59543 has been completed",
+      "sender": {
+        "user_id": 1,
+        "phone_number": "250791666666",
+        "full_name": "Samuel Carter"
+      },
+      "receiver": {
+        "user_id": 2,
+        "phone_number": "250790777777",
+        "full_name": "Jane Smith",
+        "account_number": "59543"
+      },
+      "category": {
+        "category_id": 5,
+        "category_name": "Merchant Payment",
+        "category_code": "MER"
+      }
+    }
+  },
+  "api_responses": {
+    "transaction_list": {
+      "status": "success",
+      "data": {
+        "transactions": [
+          {
+            "tx_id": "51732411227",
+            "amount": 600.00,
+            "category": "Payment",
+            "date": "2024-05-10T21:32:32Z",
+            "status": "completed"
+          }
+        ],
+        "pagination": {
+          "page": 1,
+          "limit": 10,
+          "total": 1
+        }
+      }
+    },
+    "user_profile": {
+      "status": "success",
+      "data": {
+        "user": {
+          "user_id": 1,
+          "phone_number": "250791666666",
+          "full_name": "Samuel Carter",
+          "balance": 25000.00,
+          "status": "active",
+          "recent_transactions": [
+            {
+              "tx_id": "51732411227",
+              "amount": 600.00,
+              "type": "debit",
+              "date": "2024-05-10T21:32:32Z"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
