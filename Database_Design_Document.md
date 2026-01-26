@@ -204,7 +204,7 @@ WHERE t.tx_id = '51732411227';
 |-------|--------|-----|------------------|-------------|---------------|---------------|--------|
 | 51732411227 | 600.00 | 0.00 | 2024-05-10 21:32:32 | Samuel Carter | Jane Smith | Payment | completed |
 
-**Screenshot Location**: [Insert screenshot showing query execution and results]
+**Screenshot Location**: [![alt text](image.png)]
 
 ### Query 2: Transaction Analytics by Category
 ```sql
@@ -228,7 +228,7 @@ ORDER BY total_amount DESC;
 | Merchant Payment | 1 | 10900.00 | 10900.00 | 0.00 | 2024-05-12 13:26:13 | 2024-05-12 13:26:13 |
 | Money Transfer | 2 | 15000.00 | 7500.00 | 150.00 | 2024-05-11 20:34:47 | 2024-05-13 09:15:22 |
 
-**Screenshot Location**: [Insert screenshot showing aggregated results]
+**Screenshot Location**: [![alt text](image-1.png)]
 
 ### Query 3: Complete Audit Trail for Transaction
 ```sql
@@ -256,7 +256,7 @@ ORDER BY sl.created_at;
 | 51732411227 | 600.00 | Samuel Carter | Payment | INFO | Transaction processed successfully | PROCESSING | 2024-05-10 21:32:35 |
 | 51732411227 | 600.00 | Samuel Carter | Payment | INFO | SMS notification sent | NOTIFICATION | 2024-05-10 21:32:40 |
 
-**Screenshot Location**: [Insert screenshot showing complete audit trail]
+**Screenshot Location**: [![alt text](image-2.png)]
 
 ### Query 4: Performance Analysis with Index Usage
 ```sql
@@ -265,7 +265,7 @@ EXPLAIN SELECT * FROM transactions WHERE tx_id = '51732411227';
 
 **Expected Result**: Shows index usage (key: idx_tx_id, type: const)
 
-**Screenshot Location**: [Insert screenshot showing EXPLAIN output demonstrating index usage]
+**Screenshot Location**: [![alt text](image-3.png)]
 
 ---
 
@@ -357,7 +357,7 @@ END//
 DELIMITER ;
 ```
 
-**Screenshot Location**: [Insert screenshot showing triggers preventing unauthorized modifications]
+**Screenshot Location**: [![alt text](image-4.png)]
 
 ### 3. Foreign Key Actions (Complete Implementation)
 
@@ -599,11 +599,3 @@ The MoMo SMS Data Processing System database design successfully addresses all b
 The database design demonstrates professional-grade implementation suitable for production mobile money transaction processing with complete audit trails, regulatory compliance, and enterprise-level performance characteristics. All rubric requirements have been exceeded with comprehensive documentation, testing, and security implementation.
 
 ---
-
-**Document Information:**
-- **Version**: 1.0 Final
-- **Date**: January 26, 2024
-- **Authors**: MoMo Database Design Team
-- **Status**: Production Ready
-- **Total Pages**: [Page Count]
-- **Screenshots**: [Number] included demonstrating functionality
